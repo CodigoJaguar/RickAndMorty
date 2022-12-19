@@ -5,14 +5,16 @@ import SearchBar from './components/SearchBar.jsx'
 import characters, { Rick } from './data.js'
 import Nav from './components/Nav.jsx'
 import React from 'react'
-import { Router , Route } from "react-router-dom";
+import { Route , Routes } from "react-router-dom";
 import About from './components/About'
 import Detail from './components/Detail'
 import { useLocation } from 'react-router-dom'
 import Form from './components/Form'
-import useNavigate from 'react-router-dom'
+ //"react-router-dom": "^5.3.4", "react-router-dom": "^6.5.0",
+import {useNavigate} from 'react-router-dom'
 import { Link } from "react-router-dom";
 import { Favorites } from './components/Favoritos/Favorites'
+import { useEffect } from 'react'
 //import { connect } from "react-redux";
 
 // Ctrl + Click Izquierdo = direcciona y si esta mal 
@@ -28,14 +30,26 @@ function App () {
   // ----------------------- Datos de los personajes---------
   const [characters, setCharacter ] = React.useState([]);
   //---------------------------------------------------------
-  
+  const location = useLocation();
   //---------------------------------Seguridad--------------------
-   //const navigate = useNavigate();
+   const navigate = useNavigate();
    const [access, setAccess] = React.useState(false);
    const username = 'ejemplo@gmail.com';
    const password = '1password';
 
-  //const [userData, setUserData] = React.useState({ username: '', password: '' });
+   function login(userData) {
+    if (userData.password === password && userData.username === username) {
+       setAccess(true);
+       navigate('/home');
+    }
+    }
+
+    useEffect(() => {
+      !access && navigate('/');
+   }, [access]);
+
+
+   
   
   function onSearch(character){
 
@@ -71,30 +85,22 @@ function App () {
 
 
   return (
- 
-    <div className='App' style={{ padding: '25px' }}>       
+    
+    <div className='App' style={{ padding: '25px' }}>   
         
-        <Route  path="/">  <Nav OnSearch={onSearch}/>   </Route>
-        <Route  exact path="/favorites">  <Favorites/>  </Route>
-
-          <Route exact path="/home">
-              <div>
-              <Cards characters={characters} onClose={onClose}/> 
-              </div> 
-          </Route>
-
-        <Route exact path="/detail/:id" component={Detail}/>
-
-        <Route exact path="/about">
-            <About/>
-        </Route>
-          
+        {location.pathname === '/' ? <Form/> : null}
+        {location.pathname === '/' ? null : <Nav OnSearch={onSearch}/>}
+        <Routes>
+          <Route exact path="/home" element={<div>
+                                              <Cards characters={characters} onClose={onClose}/> 
+                                              </div> }></Route>
+          <Route exact path="/about" element={<About/>}/>
+          <Route exact path="/detail/:id" element={Detail}/>
+        </Routes>    
    </div>
-
+   
   )
 }
-
-
 
 
 export default App //sin usar Redux
@@ -137,3 +143,23 @@ export default App //sin usar Redux
       // </div>    
 
       // forma de introducir los componentes en version 6.4.4 que me quedó:      element={<Cards characters={characters} 
+
+
+      //---------------------------Version 5.3.4-----------------
+      // <Route  path="/">  <Nav OnSearch={onSearch}/>   </Route>
+      // <Route  exact path="/favorites">  <Favorites/>  </Route>
+
+      //   <Route exact path="/home">
+      //       <div>
+      //       <Cards characters={characters} onClose={onClose}/> 
+      //       </div> 
+      //   </Route>
+
+      // <Route exact path="/detail/:id" component={Detail}/>
+
+      // <Route exact path="/about">
+      //     <About/>
+      // </Route> 
+
+
+      //<Route  path="/" element={<Nav OnSearch={onSearch}/> }></Route>

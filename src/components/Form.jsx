@@ -2,20 +2,38 @@ import styled from "styled-components";
 import React from 'react';
 import  validation from "./validation";
 import './Contact.modules.css'
+import { useNavigate } from "react-router-dom";
+import { useEffect } from "react";
+import { useState } from "react";
 
 
 
 export default function Form(props) {
 
-    //props.handleInputChange
+   const navigate = useNavigate();
+   const [access, setAccess] = React.useState(false);
+   const username = 'ejemplo@gmail.com';
+   const password = '1password';
+
+   function login(userData) {
+    if (userData.password === password && userData.username === username) {
+       setAccess(true);
+       navigate('/home');
+    }
+    }
+
+    useEffect(() => {
+      !access && navigate('/');
+   }, [access]);
+
 
     const [inputs, setInputs ] = React.useState({
-        name    : '',
+        username    : '',
         password   : '',
      });
     
      const [errors, setErrors] = React.useState({
-      name    : '',
+      username    : '',
       password   : '',
      });
     
@@ -32,13 +50,14 @@ export default function Form(props) {
     let ErrorsArray = Object.keys(errors)  ;              // Me retorna un arreglo con todas las propiedades de un objeto
     if(ErrorsArray.length==0) alert('Datos completos')
     else alert('Debes corregir los errores')
+    login(inputs)
     }
 
     return (
         <>
         <form onSubmit={handleSubmit}>
             <label> Username: 
-                <input name='nombre' onChange={handleChange} className={errors.name && 'warning'} value={inputs.name}></input>
+                <input name='username' onChange={handleChange} className={errors.name && 'warning'} value={inputs.name}></input>
                 <p className='danger'>{errors.name}</p>
             </label>
 
