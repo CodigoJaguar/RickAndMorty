@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const Div1 = styled.div`
   display : flex ;
-  flex-direction : row ;
+  flex-direction : column ;
   justify-content : space-around ;
   align-items: center ;
   padding : 20px ;
