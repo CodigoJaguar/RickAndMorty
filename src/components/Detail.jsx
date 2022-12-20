@@ -55,10 +55,8 @@ export default function Detail(props) {
          
          <Link to="/home">
          <button> Home </button>
-
          </Link>
          
-
          <H2s className="card-title">{character.name} </H2s>
          
          <H2s> {character.status} </H2s>

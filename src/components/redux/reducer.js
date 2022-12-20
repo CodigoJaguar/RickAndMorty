@@ -11,6 +11,7 @@ const initialState = {
 function rootReducer(state = initialState,actions){
     switch (actions.type) {
         case ADD_CHARACTER:
+            console.log(state)
             return {state, myFavorites:[...state.myFavorites,actions.payload] }
         case DELETE_CHARACTER:
             //console.log(state.myFavorites?.filter(fav => fav.id !== actions.payload))

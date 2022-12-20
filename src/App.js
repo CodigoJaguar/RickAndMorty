@@ -7,16 +7,15 @@ import Nav from './components/Nav.jsx'
 import React from 'react'
 import { Route , Routes } from "react-router-dom";
 import About from './components/About'
-import Detail from './components/Detail'
 import { useLocation } from 'react-router-dom'
 import Form from './components/Form'
  //"react-router-dom": "^5.3.4", "react-router-dom": "^6.5.0",
 import {useNavigate} from 'react-router-dom'
 import { Link } from "react-router-dom";
-import { Favorites } from './components/Favoritos/Favorites'
 import { useEffect } from 'react'
-//import { connect } from "react-redux";
-
+//  Estas {} llaves hacen que no se detecte el componente Favorites
+import Favorites from './components/Favorites'
+import Detail from './components/Detail'
 // Ctrl + Click Izquierdo = direcciona y si esta mal 
 
 // Version 6.4.4 esto no  funciona   react-router-dom 
@@ -91,11 +90,22 @@ function App () {
         {location.pathname === '/' ? <Form/> : null}
         {location.pathname === '/' ? null : <Nav OnSearch={onSearch}/>}
         <Routes>
-          <Route exact path="/home" element={<div>
-                                              <Cards characters={characters} onClose={onClose}/> 
-                                              </div> }></Route>
+            <Route exact path="/home" element={ characters.length === 0 ? (
+                <img
+                src={require('./immagini/Portal_RnM6.png')}
+                alt='Imagen inicio'></img>
+                    ) : ( <div>
+                            <img
+                              className='Logo'
+                              src={require('./immagini/logoTransparente.png')}
+                              alt='Logo Ricky Morty'></img>                     
+                            <Cards characters={characters} onClose={onClose}/> 
+                          </div> 
+                        ) }>
+            </Route> 
           <Route exact path="/about" element={<About/>}/>
-          <Route exact path="/detail/:id" element={Detail}/>
+          <Route exact path="/detail/:id" element={<Detail/>}/>
+          <Route exact path="/favorites" element={<Favorites/>}/>
         </Routes>    
    </div>
    

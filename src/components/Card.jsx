@@ -7,17 +7,69 @@ import { useEffect } from "react";
 
 
 const Div1 = styled.div`
+  box-shadow: 0 8px 16px 0 #17ff0f33, 0 6px 20px 0 rgba(0,0,0,0.19); 
+  box-shadow: 0px 0px 8px rgb(8, 241, 86);
   display : flex ;
-  flex-direction : row ;
+  flex-direction : column ;
   justify-content : space-around ;
   align-items: center ;
-  padding : 20px ;
-  background-color: rgb(96, 26, 130);
+  padding : 20px ;  
+  background-color:#a8e339ed;
+  border-radius: 3em;
+  width: 340px;
+  height: 320px;
 `;
 
-const H3s = styled.h2`
- color : white ;
+// box-shadow: 0 8px 16px 0 #17ff0f33, 0 6px 20px 0 rgba(0,0,0,0.19); 
+// border-radius: 2em;
+// width: 320px;
+// height: 320px;
+// background-color: #dff251ee;
+// padding:.4em; 
+// box-shadow: 0px 0px 8px rgb(8, 241, 86);
+// margin: 1em;
+
+const H2s = styled.h2`
+   color: #142a05 ;
+   font-family: 'Cafe Francoise';
+   font-size: 1.7em;
+   margin:0em;
 `;
+
+const ImgStyled = styled.img`
+   border-radius:10em;
+   border: white 1px;
+   width: 160px;
+   margin-bottom:.6em;
+`
+const DivStyled2 = styled.div`
+   display:flex;
+   flex-direction: row;
+   justify-content:center;
+   font-family: 'IBM Plex Mono';
+  font-weight: 600;
+   margin:auto;
+   color: #4b4a4a ;
+   font-size: .9em;
+
+`
+const H1Styled = styled.h1`
+color: #142a05 ;
+font-family: 'Cafe Francoise';
+font-size: 1.7em;
+margin:0em;
+
+`
+
+
+//    .characterName:hover{
+//    transform: scale(1.1);
+  
+//   transition: transform  1s;
+//   transition:  color 2s;
+//   text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 42px #0fa, 0 0 82px #0fa,0 0 92px #0fa;
+//   cursor: cell;
+//    }
 
 // En <Link> genera un texto con el nombre de la carta y su link
 
@@ -36,6 +88,7 @@ export  function Card(props) {
    const [isFav, setIsFav ] = React.useState(false);
 
    function handleFavorite() {
+      
       if (isFav) {
          setIsFav(false)
          props.deleteCharacter(props.id)
@@ -52,19 +105,24 @@ export  function Card(props) {
 
    return (
       <Div1>
-            { isFav ? (<button onClick={handleFavorite}>❤️</button>) : (
+         <div>
+         { isFav ? (<button onClick={handleFavorite}>❤️</button>) : (
                <button onClick={handleFavorite}>🤍</button>  ) }
 
          <button onClick={()=>props.onClose(props.id)}> X </button>
 
+         </div>
+          
+
          <Link to={`/detail/${props.id}`} >
-         <H3s className="card-title">{props.name} </H3s>
+         <H2s className="card-title">{props.name} </H2s>
          </Link>
-         
-         <h2> {props.species} </h2>
-         <h2> {props.gender}  </h2>
-         <h2> {props.origin}  </h2>
-         <img  src={props.image} alt="" /> 
+         <DivStyled2>
+         <h2> Specie: {props.species}  | Gender: {props.gender}  </h2>
+         <h2> Origin: {props.origin}  </h2>
+         </DivStyled2>
+        
+         <ImgStyled  src={props.image} alt="" /> 
          
       </Div1>
    );
