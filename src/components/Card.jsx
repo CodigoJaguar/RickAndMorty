@@ -89,7 +89,7 @@ export  function Card(props) {
    const [isFav, setIsFav ] = React.useState(false);
 
    function handleFavorite() {
-      console.log(props)
+      //console.log(props)
       if (isFav) {
          setIsFav(false)
          props.deleteCharacter(props.id)

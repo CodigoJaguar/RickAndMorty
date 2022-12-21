@@ -1,4 +1,5 @@
 import React from 'react';
+import './EstilosDefault.css'
 
 // Ej. Datos
 // const example = {
@@ -23,9 +24,10 @@ export default function SearchBar(props) {
 
    return (
       <div>
-         <input type='search' onChange={handleChange}/>
-         <button onClick ={()=>props.onSearch(NamePersonaje)}> Agregar </button>
-         <button onClick ={()=>props.onSearch(randomId)}> AgregarRandom </button>
+         <button onClick ={()=>props.onSearch(NamePersonaje)} className='btnAgregar'> Search </button>
+         <input type='search' onChange={handleChange} className="inputSearch" placeholder='Search by numeric ID'></input>
+         <button onClick ={()=>props.onSearch(randomId)}  className="btnRandom"> Add Random </button>
+         
       </div>
       
    );

@@ -17,8 +17,9 @@ const Styledh1 = styled.h1`
 
 
 export  function Favorites({myFavorites}) {
-    console.log(myFavorites)
+    //console.log(myFavorites)
     
+    //            Mapeo de tarjetas usando la informacion del estado global [myFavorites]
     return (
         <> 
         
@@ -42,6 +43,7 @@ export  function Favorites({myFavorites}) {
  }
 
 
+ //       Estado Gobla  [myFavorites]  que es un arreglo de objetos(personajes)
 const mapStateToProps = (state) =>{
     return {
       myFavorites : state.myFavorites
@@ -51,19 +53,3 @@ const mapStateToProps = (state) =>{
 
  export default connect(mapStateToProps,null)(Favorites);
 
-
-//  <Card 
-//  id = {character.id}
-//  name={character.name}  
-//  gender={character.gender} 
-//  species = {character.species} 
-//  image= {character.image} 
-//  key = {character.name}
-//  origin = {character.origin?.name}   
-//  onClose = {props.onClose}  /> 
-
-
-          //  <div>
-          //       <h3>{character.id}</h3>
-          //       <img src={character.image} alt="" />
-          //   </div>  

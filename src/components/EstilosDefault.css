@@ -57,3 +57,67 @@
     margin: 15px;
   }
   
+
+
+
+
+
+  .btnNav{
+    font-family: 'IBM Plex Mono';
+    font-weight: 600;
+    background-color: #ccc908;
+    width: 100px;
+    border-radius:.4em;
+    box-shadow: 0 3px 3px 0 #10b7323d, 0 17px 50px 0 rgba(0,0,0,0.19);
+    margin-bottom:.5em;
+    margin-left:1em;
+    padding:.5em;}
+  
+  
+    .btnNav:hover{
+    background-color: #e651c8;
+    }
+  
+
+    
+
+.btnAgregar{
+  font-family: 'IBM Plex Mono';
+    font-weight: 600;
+     background-color: #cc08af;
+     width: 80px;
+     border-radius:.4em;
+     box-shadow: 0 3px 3px 0 #10b7323d, 0 17px 50px 0 rgba(0,0,0,0.19);
+     margin-bottom:.5em;
+     margin-left:1em;
+     padding:.5em;}
+  
+     .btnAgregar:hover{
+        background-color: #15cebe;
+     }
+  
+     
+  .btnRandom{
+    font-family: 'IBM Plex Mono';
+    font-weight: 600;
+    background-color: #12cc08;
+    border-radius:.4em;
+    box-shadow: 0 3px 3px 0 #10b7323d, 0 17px 50px 0 rgba(0,0,0,0.19);
+    margin: 0px;
+    padding: .5em;
+    margin-right: 4em ;
+    margin-left: 2em;
+    }
+
+    .btnRandom:hover{
+      background-color: #15cebe;
+   }
+  
+   
+.inputSearch{
+  width: 200px;
+  height: 2em;
+  border-radius:.4em;
+  background-color: #efef91 ;
+  margin-left: 20px;
+ }
