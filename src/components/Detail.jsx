@@ -57,11 +57,12 @@ export default function Detail(props) {
          <button> Home </button>
          </Link>
          
-         <H2s className="card-title">{character.name} </H2s>
+         <H2s className="card-title">Name: {character.name} </H2s>
          
-         <H2s> {character.status} </H2s>
-         <H2s> {character.specie}  </H2s>
-         <H2s> {character.gender}  </H2s>
+         <H2s> Status: {character.status} </H2s>
+         <H2s> Specie: {character.species}  </H2s>
+         <H2s> Gender: {character.gender}  </H2s>
+         <H2s> Origin: {character.origin?.name}  </H2s>
          <img  src={character.image} alt="" /> 
          
 

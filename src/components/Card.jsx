@@ -13,7 +13,8 @@ const Div1 = styled.div`
   flex-direction : column ;
   justify-content : space-around ;
   align-items: center ;
-  padding : 20px ;  
+  padding : 20px ;
+  margin-top: 20px;
   background-color:#a8e339ed;
   border-radius: 3em;
   width: 340px;
@@ -47,7 +48,7 @@ const DivStyled2 = styled.div`
    flex-direction: row;
    justify-content:center;
    font-family: 'IBM Plex Mono';
-  font-weight: 600;
+   font-weight: 600;
    margin:auto;
    color: #4b4a4a ;
    font-size: .9em;
@@ -88,14 +89,14 @@ export  function Card(props) {
    const [isFav, setIsFav ] = React.useState(false);
 
    function handleFavorite() {
-      
+      console.log(props)
       if (isFav) {
          setIsFav(false)
          props.deleteCharacter(props.id)
          //console.log(props.myFavorites)
       }else{
       setIsFav(true)
-      const Character = {id: props.id , species:props.species, name:props.name, image:props.image }
+      const Character = {id: props.id , species:props.species, name:props.name, image:props.image , gender:props.gender, origin:props.origin}
       props.addCharacter(Character)
       }
    }

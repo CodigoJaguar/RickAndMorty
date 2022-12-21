@@ -1,6 +1,19 @@
 import { connect } from "react-redux"
 import React from "react";
 import Card from "./Card";
+import styled from "styled-components";
+
+
+const StyledDiv = styled.div`
+   display: flex;
+   justify-content:space-evenly;
+   flex-direction:row ;
+   flex-wrap: wrap;
+`
+const Styledh1 = styled.h1`
+   color: #34e179;
+   font-family: 'Rubik Gemstones';
+`
 
 
 export  function Favorites({myFavorites}) {
@@ -8,20 +21,21 @@ export  function Favorites({myFavorites}) {
     
     return (
         <> 
-        <h1>Solo los obstáculos le dan sentido al propósito</h1>
-       
-       <div>
-       {myFavorites?.map( character => (<Card 
-                                              id = {character.id}
-                                              name={character.name}  
-                                              
-                                              species = {character.species} 
-                                              image= {character.image} 
-                                              
-                                               /> 
-              
-       ) )}
-       </div>
+        
+          <Styledh1>FAVORITES</Styledh1>
+            <StyledDiv>
+            {myFavorites?.map( character => (<Card 
+                                                    id = {character.id}
+                                                    name={character.name}  
+                                                    gender={character.gender}
+                                                    species = {character.species} 
+                                                    image= {character.image} 
+                                                    origin={character.origin}
+                                                    
+                                                    /> 
+                    
+            ) )}
+            </StyledDiv>
        </>
        
     );
