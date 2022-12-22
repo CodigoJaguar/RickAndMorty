@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { addCharacter , deleteCharacter } from "./redux/actions";
 import { connect } from "react-redux"
 import React from "react";
-import { useEffect } from "react";
 
 
 const Div1 = styled.div`
@@ -15,7 +14,7 @@ const Div1 = styled.div`
   align-items: center ;
   padding : 20px ;
   margin-top: 20px;
-  background-color:#a8e339ed;
+  background-color:rgb(16, 222, 222);
   border-radius: 3em;
   width: 340px;
   height: 320px;
@@ -53,7 +52,7 @@ margin:0em;
 `
 
 //  No se usan Hooks para hacer [Dispatch], ni para acceder al [state] global
-export  function Card(props) {
+export  function FavCard(props) {
    
 
    React.useEffect(() => {
@@ -88,12 +87,8 @@ export  function Card(props) {
          <div>
          { isFav ? (<button onClick={handleFavorite}>❤️</button>) : (
                <button onClick={handleFavorite}>🤍</button>  ) }
-
-         <button onClick={()=>props.onClose(props.id)}> X </button>
-
          </div>
           
-
          <Link to={`/detail/${props.id}`} >
          <H2s className="card-title">{props.name} </H2s>
          </Link>
@@ -122,11 +117,7 @@ const mapDispatchToProps = (dispatch)=>{
              deleteCharacter: id=> dispatch(deleteCharacter(id))    }   
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Card);
-
-
-
-
+export default connect(mapStateToProps, mapDispatchToProps)(FavCard);
 
 
 

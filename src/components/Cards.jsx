@@ -23,9 +23,11 @@ export default function Cards(props) {
                                     gender={character.gender} 
                                     species = {character.species} 
                                     image= {character.image} 
-                                    key = {character.name}
                                     origin = {character.origin?.name}   
                                     onClose = {props.onClose}  />  ) }
    </StyledDiv>
    );
 }
+
+
+//key = {Date.now()}
