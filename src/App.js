@@ -1,5 +1,4 @@
 import './App.css'
-import Card from './components/Card.jsx'
 import Cards from './components/Cards.jsx'
 import SearchBar from './components/SearchBar.jsx'
 import characters, { Rick } from './data.js'
@@ -16,6 +15,7 @@ import { useEffect } from 'react'
 //  Estas {} llaves hacen que no se detecte el componente Favorites
 import Favorites from './components/Favorites'
 import Detail from './components/Detail'
+import Error404 from './components/Error404'
 // Ctrl + Click Izquierdo = direcciona y si esta mal 
 
 // Version 6.4.4 esto no  funciona   react-router-dom 
@@ -29,26 +29,9 @@ function App () {
   // ----------------------- Datos de los personajes---------
   const [characters, setCharacter ] = React.useState([]);
   //---------------------------------------------------------
+  //  Detectar la ruta donde estamos ---------
   const location = useLocation();
-  //---------------------------------Seguridad--------------------
-   const navigate = useNavigate();
-   const [access, setAccess] = React.useState(false);
-   const username = 'ejemplo@gmail.com';
-   const password = '1password';
-
-   function login(userData) {
-    if (userData.password === password && userData.username === username) {
-       setAccess(true);
-       navigate('/home');
-    }
-    }
-
-    useEffect(() => {
-      !access && navigate('/');
-   }, [access]);
-
-
-   
+  //------------------------------------------
   
   function onSearch(character){
 
@@ -71,7 +54,6 @@ function App () {
   }
   // Cerrar cartas individuales -----------------
   function onClose(Id) {
-    console.log(characters)
     setCharacter(characters.filter(char=>char.id !== Id))
   }
   // --------------------------------------------
@@ -106,6 +88,7 @@ function App () {
           <Route exact path="/about" element={<About/>}/>
           <Route exact path="/detail/:id" element={<Detail/>}/>
           <Route exact path="/favorites" element={<Favorites/>}/>
+          {/* <Route path="*" element={<Error404/>}> </Route>  añadiendo esta ruta es vulnerable a saltarse el login*/}
         </Routes>    
    </div>
    

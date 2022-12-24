@@ -9,7 +9,7 @@ import { useState } from "react";
 
 
 export default function Form(props) {
-
+   //-------------------------------------Seguridad----------------------------
    const navigate = useNavigate();
    const [access, setAccess] = React.useState(false);
    const username = 'ejemplo@gmail.com';
@@ -25,8 +25,9 @@ export default function Form(props) {
     useEffect(() => {
       !access && navigate('/');
    }, [access]);
+   //---------------------------------------------------------------------------
 
-
+   // ------------------------  Estado local de logeo---------------------------
     const [inputs, setInputs ] = React.useState({
         username    : '',
         password   : '',
@@ -42,7 +43,7 @@ export default function Form(props) {
     
       setErrors(validation({...inputs,[evento.target.name]: evento.target.value}))
      }
-
+   //--------------------------------------------------------------------------
     
      
     const handleSubmit = (evento)=>{
@@ -57,8 +58,8 @@ export default function Form(props) {
         <>
         <form onSubmit={handleSubmit}>
             <label> Username: 
-                <input name='username' onChange={handleChange} className={errors.name && 'warning'} value={inputs.name}></input>
-                <p className='danger'>{errors.name}</p>
+                <input name='username' onChange={handleChange} className={errors.username && 'warning'} value={inputs.username}></input>
+                <p className='danger'>{errors.username}</p>
             </label>
 
             <label> Password: 
