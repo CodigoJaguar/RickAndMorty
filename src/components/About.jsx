@@ -15,7 +15,7 @@ export default function About(props) {
                 <img
                     className='imgSanta'
                                 src={require('../immagini/FotoEspacial.jpg')}
-                                alt='Cindy Posada'></img>
+                                alt=''></img>
 
                 <div className='aboutInfotxt'>
                     <p><b>Hi! My name is Santander, you can call me Santa!</b> I'm the creator of this page, here you can find Rick & Mortys' characters, you could search for them by their ID or get one randomly,
