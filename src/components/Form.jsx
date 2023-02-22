@@ -58,12 +58,12 @@ export default function Form(props) {
         <>
         <form onSubmit={handleSubmit}>
             <label> Username: 
-                <input name='username' onChange={handleChange} className={errors.username && 'warning'} value={inputs.username}></input>
+                <input name='username' placeholder='ejemplo@gmail.com' onChange={handleChange} className={errors.username && 'warning'} value={inputs.username}></input>
                 <p className='danger'>{errors.username}</p>
             </label>
 
             <label> Password: 
-                <input name='password' onChange={handleChange} className={errors.password && 'warning'} value={inputs.password}></input>
+                <input name='password' placeholder='1password' onChange={handleChange} className={errors.password && 'warning'} value={inputs.password}></input>
                 <p className='danger'>{errors.password}</p>
             </label>
 
